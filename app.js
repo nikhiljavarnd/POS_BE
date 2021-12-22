@@ -1,9 +1,10 @@
+
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
 // const userData = require("./models/userModel");
-// const userRouter = require("./routers/userRoute");
+ const authRouter = require("./routes/authRoutes");
 // const productRouter = require("./routers/productRoute");
 
 const app = express();
@@ -17,7 +18,8 @@ app.use(cors());
 // To convert req.body to JSON format
 app.use(express.json());
 
-// app.use("/", userRouter);
+app.use("/api/v1/auth",authRouter);
 // app.use("/", productRouter);
 
 //--------export module---------------
+
