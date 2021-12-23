@@ -3,8 +3,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 //const userData = require("./models/authModel");
-const authRouter = require("./routes/authRoutes");
-const globalErrorHandler = require("./controllers/errorController");
+const authRouter = require(`${__dirname}/routes/authRoutes`);
+const globalErrorHandler = require(`${__dirname}/controllers/errorController`);
 
 const app = express();
 
