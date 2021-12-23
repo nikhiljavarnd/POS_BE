@@ -17,6 +17,10 @@ app.use(cors());
 // To convert req.body to JSON format
 app.use(express.json());
 
+app.get("/", function (req, res) {
+  res.send("hello world");
+});
+
 app.use("/api/v1/auth", authRouter);
 
 app.all("*", (req, res, next) => {
