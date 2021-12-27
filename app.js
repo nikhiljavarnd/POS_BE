@@ -21,6 +21,10 @@ app.get("/", function (req, res) {
   res.send("hello world");
 });
 
+app.use("/", function (req, res) {
+  res.status(200).send("hello world");
+});
+
 app.use("/api/v1/auth", authRouter);
 
 app.all("*", (req, res, next) => {
