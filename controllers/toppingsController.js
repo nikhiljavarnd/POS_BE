@@ -20,6 +20,7 @@ exports.listToppings = catchAsync(async (req, res, next) => {
     });
 });
 
+//create toppings
 exports.createToppings = catchAsync(async (req, res, next) => {
   // Validate request
   if (!req.body.name) {
@@ -28,13 +29,13 @@ exports.createToppings = catchAsync(async (req, res, next) => {
     );
   }
 
-  // Create a Tutorial
+  // Create a Topping
   const toppings = new Toppings({
     name: req.body.name,
     price: req.body.price
   });
 
-  // Save Tutorial in the database
+  // Save topping in the database
   toppings
     .save(toppings)
     .then(data => {
@@ -47,8 +48,10 @@ exports.createToppings = catchAsync(async (req, res, next) => {
     });
 });
 
+//Update Toppings
 exports.updateToppings = catchAsync(async (req, res, next) => {
 
+  //validate 
   if (Object.keys(req.body).length === 0) {
     return next(
       new AppError("Data to update can not be empty!", 400)
@@ -56,14 +59,14 @@ exports.updateToppings = catchAsync(async (req, res, next) => {
   }
 
   const id = req.params.id;
-
+  //Find the topping by id and update
   Toppings.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {       
         return next(
-          new AppError(`Cannot update Topping with id=${id}. Maybe Topping was not found!`, 404)
+          new AppError(`Cannot update Topping with id=${id}.Topping was not found!`, 404)
         );
-      } else res.send({ message: "Topping was updated successfully." });
+      } else res.send({ message: "Topping updated successfully." });
     })
     .catch(err => {     
       return next(
@@ -73,6 +76,7 @@ exports.updateToppings = catchAsync(async (req, res, next) => {
  
 });
 
+//Delete the toppings with ID
 exports.deleteToppings = catchAsync(async (req, res, next) => {
 
   const id = req.params.id;
@@ -81,11 +85,11 @@ exports.deleteToppings = catchAsync(async (req, res, next) => {
     .then(data => {
       if (!data) {       
         return next(
-          new AppError(`Cannot delete Topping with id=${id}. Maybe Topping was not found!`, 404)
+          new AppError(`Cannot delete Topping with id=${id}.Topping was not found!`, 404)
         );
       } else {
         res.send({
-          message: "Topping was deleted successfully!"
+          message: "Topping  deleted successfully!"
         });
       }
     })

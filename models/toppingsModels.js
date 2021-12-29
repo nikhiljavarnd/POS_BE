@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 
 const toppingsSchema = new mongoose.Schema({
   name: {
@@ -7,10 +6,11 @@ const toppingsSchema = new mongoose.Schema({
     required: [true, "please select a topping"],
   },
   price: {
-    type: String
+    type: Number
   },
 });
 
+//Formatiing the response 
 toppingsSchema.method("toJSON", function() {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
