@@ -4,6 +4,7 @@ const cors = require("cors");
 
 //const userData = require("./models/authModel");
 const authRouter = require(`${__dirname}/routes/authRoutes`);
+const pizzaRouter = require(`${__dirname}/routes/pizzaRoutes`);
 const globalErrorHandler = require(`${__dirname}/controllers/errorController`);
 
 const app = express();
@@ -22,6 +23,7 @@ app.get("/", function (req, res) {
 });
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/pizza", pizzaRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`));
