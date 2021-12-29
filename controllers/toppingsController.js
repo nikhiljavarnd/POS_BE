@@ -5,10 +5,12 @@ const Toppings = require("../models/toppingsModels");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
+//list toppings 
 exports.listToppings = catchAsync(async (req, res, next) => {
   const name = req.query.name;
   var condition = name ? { name: { $regex: new RegExp(name), $options: "i" } } : {};
 
+  // find the toppings by ID
   Toppings.find(condition)
     .then(data => {
       res.send(data);
@@ -58,7 +60,7 @@ exports.updateToppings = catchAsync(async (req, res, next) => {
     );
   }
 
-  const id = req.params.id;
+  const id = req.params.id;  
   //Find the topping by id and update
   Toppings.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
@@ -81,6 +83,7 @@ exports.deleteToppings = catchAsync(async (req, res, next) => {
 
   const id = req.params.id;
 
+  //find toppings by ID and delete
   Toppings.findByIdAndRemove(id)
     .then(data => {
       if (!data) {       

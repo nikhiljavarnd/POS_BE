@@ -10,7 +10,7 @@ const toppingsSchema = new mongoose.Schema({
   },
 });
 
-//Formatiing the response 
+//Formatting the response
 toppingsSchema.method("toJSON", function() {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
