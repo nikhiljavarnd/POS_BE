@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
-//const userData = require("./models/authModel");
+const AppError = require(`${__dirname}/utils/appError`);
 const authRouter = require(`${__dirname}/routes/authRoutes`);
 const pizzaRouter = require(`${__dirname}/routes/pizzaRoutes`);
 const globalErrorHandler = require(`${__dirname}/controllers/errorController`);
@@ -17,14 +17,6 @@ app.use(cors());
 
 // To convert req.body to JSON format
 app.use(express.json());
-
-app.get("/", function (req, res) {
-  res.send("hello world");
-});
-
-app.use("/", function (req, res) {
-  res.status(200).send("hello world");
-});
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/pizza", pizzaRouter);
