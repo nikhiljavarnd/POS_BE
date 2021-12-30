@@ -3,10 +3,15 @@ const mongoose = require("mongoose");
 const toppingsSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "please select a topping"],
+    required: [true, "Please select a topping"],
+    unique: true,
+    trim: true,
+    maxlength: [40, 'Topping Name must have less or equal 40 characters'],
+    minlength: [4, 'Topping Name must at least 4 characters'],
   },
   price: {
-    type: Number
+    type: Number,
+    required: [true, 'A Topping must have a price'],
   },
 });
 
