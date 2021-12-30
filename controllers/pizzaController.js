@@ -15,7 +15,19 @@ exports.getAllPizza = catchAsync(async (req, res, next) => {
 });
 
 exports.insertPizza = catchAsync(async (req, res, next) => {
-  const newPizza = await Pizza.create(req.body);
+  const name = req.body.name;
+  const description = req.body.description;
+  const price = req.body.price;
+  const image = req.file.filename;
+
+  const newUserData = {
+    name,
+    description,
+    price,
+    image,
+  };
+
+  const newPizza = await Pizza.create(newUserData);
 
   res.status(201).json({
     status: "success",
