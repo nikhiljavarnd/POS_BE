@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
-//const userData = require("./models/authModel");
+const AppError = require(`${__dirname}/utils/appError`);
 const authRouter = require(`${__dirname}/routes/authRoutes`);
 const toppingsRouter = require(`${__dirname}/routes/toppingsRoutes`);
 const pizzaRouter = require(`${__dirname}/routes/pizzaRoutes`);
