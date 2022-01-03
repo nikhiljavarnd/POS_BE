@@ -20,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/toppings", toppingsRouter);
+app.use("/api/v1/topping", toppingsRouter);
 app.use("/api/v1/pizza", pizzaRouter);
 
 app.all("*", (req, res, next) => {
