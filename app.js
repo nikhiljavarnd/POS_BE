@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const AppError = require(`${__dirname}/utils/appError`);
 const authRouter = require(`${__dirname}/routes/authRoutes`);
+const toppingsRouter = require(`${__dirname}/routes/toppingsRoutes`);
 const pizzaRouter = require(`${__dirname}/routes/pizzaRoutes`);
 const globalErrorHandler = require(`${__dirname}/controllers/errorController`);
 
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/topping", toppingsRouter);
 app.use("/api/v1/pizza", pizzaRouter);
 
 app.all("*", (req, res, next) => {
